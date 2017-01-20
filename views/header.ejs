@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>MyBlog</title>
+<link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+<% if (user) { %>
+<h4><%= username %></h4>
+<% } %>
+<h1><%= title %></h1>
+</header>
+
+<nav>
+
+<% if (user) { %>
+<span><a title="首頁" href="/">home</a></span>
+<span><a title="存檔" href="/archive">archive</a></span>
+<span><a title="標籤" href="/tags">tags</a></span>
+<span><a title="連結" href="/links">links</a></span>
+  <span><a title="下載" href="/download">File</a></span>
+  <span><a title="朋友" href="/friendship">friendship</a></span>
+  <span><a title="發文" href="/post">post</a></span>
+  <span><a title="社團" href="/club">club</a></span>
+  <span><a title="登出" href="/logout">logout</a></span>
+  <span><form action="/friend" method="GET"><input type="text" name="keyword" placeholder="Friend" class="search" /></form></span>
+
+<% } else { %>
+  <span><a title="登入" href="/login">login</a></span>
+  <span><a title="註冊" href="/reg">register</a></span>
+<% } %>
+<span><form action="/search" method="GET"><input type="text" name="keyword" placeholder="Post" class="search" /></form></span>
+
+</nav>
+
+<article>
+
+<% if (success) { %>
+  <div><%= success %></div>
+<% } %>
+<% if (error) { %>
+  <div><%= error %> </div>
+<% } %>

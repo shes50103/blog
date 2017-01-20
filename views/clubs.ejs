@@ -1,0 +1,20 @@
+<%- include header %>
+<form method="post">
+  社團名稱：<br />
+  <input type="text" name="clubname" />
+  <input type="submit" value="創建" />
+</form>
+
+  搜尋社團：<br />
+<span>
+<form action="/club" method="GET"><input type="text" name="keyword" placeholder="club_name" class="search" />
+  <input type="submit" value="搜尋" />
+</form>
+</span>
+
+<% club.forEach(function (other_club, index) { %>
+  <a href="/club/<%= other_club.name %>"><%= other_club.name %></a></br>
+
+<% }) %>
+
+<%- include footer %>

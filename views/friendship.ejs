@@ -1,0 +1,24 @@
+<%- include header %>
+<ul class="archive">
+<% users.forEach(function (other_user, index) { %>
+  
+	<% 
+		var flag = 0;
+		for( friend in user.friendlists) {
+			if (user.friendlists[friend].friendlist == other_user.name) { 
+				flag = 1;
+			}	
+		} 
+	%>
+	<% if (flag == 1) { %>
+		 <a href="/u/<%= other_user.name %>"><%= other_user.name %></a></br>
+		 <form method="post">
+		 <input type="hidden" name="username" value="<%= other_user.name %>">
+		 <input type="submit" value="刪除好友"/>
+		</form>
+	<% } %>
+
+  
+<% }) %>
+</ul>
+<%- include footer %>

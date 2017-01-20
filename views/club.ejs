@@ -1,0 +1,53 @@
+<%- include header %>
+<a>社團管理員:</a>
+<a href="/u/<%= club.administrator %>"><%= club.administrator %></a></br>
+<a>社團成員:</a>
+<% users.forEach(function (other_user, index) { %>
+	<% 
+		var flag = 0;
+		for( friend in club.memberlists) {
+			if (club.memberlists[friend].memberlist == other_user.name) { 
+				flag = 1;
+			}	
+		} 
+	%>
+	<% if (flag == 1) { %>
+		<a href="/u/<%= other_user.name %>"><%= other_user.name %></a>
+	<% } %>
+<% }) %>
+
+
+<!-- 以下是有會員的人才看的到!!!! -->
+	<% 
+		var flag = 0;
+		for( friend in club.memberlists) {
+			if (club.memberlists[friend].memberlist == username) { 
+				flag = 1;
+			}	
+		} 
+		<!-- 管理員看得到 -->
+		if(club.administrator == username)
+		flag = 1;
+	%>
+	<% if (flag == 1) { %>
+	</br>
+		<a href=http://140.113.69.132:6005/club/<%= club.name %>/club_member><img src='/photos/add_member.jpg'width="50"high="50"></a>
+		<form method="post">
+		  <br />留言版：<br />
+		  <textarea name="post" rows="5" cols="100"></textarea><br />
+		  <input type="submit" value="留言~" />
+		</form>
+		<% if(club_posts) {%>
+		<% club_posts.forEach(function (other_club, index) { %>
+			<a href="/u/<%= other_club.post_owner %>"><%= other_club.post_owner %></a>
+			<h5><%= other_club.post_content %></h5></br>
+			<% }) %>
+		<% } %>		
+	<% } %>
+  </br>
+
+
+
+
+	
+<%- include footer %>
