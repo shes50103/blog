@@ -47,7 +47,6 @@ User.prototype.save = function(callback) {
 };
 
 
-//返回通过标题关键字查询的所有文章信息
 User.search = function(keyword, callback) {
   mongodb.open(function (err, db) {
     if (err) {
@@ -72,9 +71,7 @@ User.search = function(keyword, callback) {
   });
 };
 
-//读取用户信息
 User.get = function(name, callback) {
-  //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
       return callback(err);//错误，返回 err 信息
@@ -98,8 +95,123 @@ User.get = function(name, callback) {
     });
   });
 };
-//新增好友
-User.addfriend = function(name, username, callback) {
+
+//修改信箱
+User.email_edit = function(name, email, callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //更新文章内容
+      collection.update({
+        "name": name ,
+      }, {
+        $set: {"email": email}
+      },{multi:true}, function (err) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    });
+  });
+};
+
+//修改password
+User.password_edit = function(name, password, callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //更新文章内容
+      collection.update({
+        "name": name ,
+      }, {
+        $set: {"password": password}
+      },{multi:true}, function (err) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    });
+  });
+};
+//消除通知
+User.delete_notice = function(name, callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //更新文章内容
+      collection.update({
+        "name": name ,
+      }, {
+        $set: {"newfriend": "0"}
+      },{multi:true}, function (err) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    });
+  });
+};
+
+//新增通知
+User.addfriend0 = function(name, username, callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //更新文章内容
+      collection.update({
+        "name": username ,
+      }, {
+        $set: {"newfriend": "1"}
+      },{multi:true}, function (err) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    });
+  });
+};
+
+User.addfriend1 = function(name, username, callback) {
   //打开数据库
   mongodb.open(function (err, db) {
     if (err) {
@@ -126,6 +238,35 @@ User.addfriend = function(name, username, callback) {
     });
   });
 };
+
+User.addfriend2 = function(name, username, callback) {
+  //打开数据库
+  mongodb.open(function (err, db) {
+    if (err) {
+      return callback(err);
+    }
+    //读取 users 集合
+    db.collection('users', function (err, collection) {
+      if (err) {
+        mongodb.close();
+        return callback(err);
+      }
+      //更新文章内容
+      collection.update({
+        "name": username ,
+      }, {
+        $push: {"friendlists": {"friendlist":name}}
+      },{multi:true}, function (err) {
+        mongodb.close();
+        if (err) {
+          return callback(err);
+        }
+        callback(null);
+      });
+    });
+  });
+};
+
 
 //刪除好友
 User.deletefriend = function(name, username, callback) {
