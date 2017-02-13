@@ -1,0 +1,50 @@
+<%- include header %>
+
+<form method="post">
+  社團名稱：
+  <input type="text" name="clubname" />
+  <input type="submit" value="創建" />
+</form>
+
+
+
+<form class="form-inline" role="form" method="post">
+  <div class="form-group">
+    <p class="form-control-static">社團名稱：</p>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="clubname" >
+  </div>
+  <button type="submit" class="btn btn-default" value="創建">創建</button>
+</form>
+
+
+<form class="form-inline" role="form" method="get">
+  <div class="form-group">
+    <p class="form-control-static">搜尋社團：</p>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="keyword" placeholder="club_name">
+  </div>
+  <button type="submit" class="btn btn-default" value="搜尋">搜尋</button>
+</form>
+
+
+
+<div class="my_container">
+
+<% club.forEach(function (other_club, index) { %>
+ <div class="my_work">
+  <a href="/club/<%= other_club.name %>"><%= other_club.name %></a></br>
+</div>
+<% }) %>
+</div>
+
+<div></div>
+  <!--<div class="clearfix"></div>-->
+<% club.forEach(function (other_club, index) { %>
+<a class="btn btn-default" href="/club/<%= other_club.name %>" ><%= other_club.name %></a>
+<% }) %>
+
+
+<%- include footer %>

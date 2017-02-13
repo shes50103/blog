@@ -1,0 +1,45 @@
+@charset "UTF-8";
+* {
+  font-family: 微軟正黑體;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+body {
+  padding: 20px;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.buybtn, .selbtn, .hoverbox, .timerbox, .countbox {
+  border: solid 3px black;
+  display: inline-block;
+  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  -webkit-transition-duration: 2s;
+          transition-duration: 2s;
+}
+.buybtn:hover, .selbtn:hover, .hoverbox:hover, .timerbox:hover, .countbox:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.buyed {
+  background-color: #f24;
+  color: #fff;
+}
+.buyed:hover {
+  background-color: #f24;
+  color: #fff;
+}
+
+.cancel:hover {
+  background-color: #666;
+  color: #fff;
+}

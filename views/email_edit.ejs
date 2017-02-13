@@ -1,0 +1,17 @@
+<%- include header %>
+<h3>Original email:</h3>
+<%= user.email %>
+
+
+
+<form class="form-inline" role="form" method="post">
+  <div class="form-group">
+    <p class="form-control-static">新信箱：</p>
+  </div>
+  <div class="form-group">
+    <input type="email" class="form-control" name="email" >
+  </div>
+  <button type="submit" class="btn btn-default" value="修改">修改</button>
+</form>
+
+<%- include footer %>

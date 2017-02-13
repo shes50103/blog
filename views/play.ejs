@@ -1,0 +1,29 @@
+<%- include header %>
+
+
+	<a class="btn btn-primary" href="https://kkbruce.tw/bs3/" target="_blank">了解更多(中文說明文件)</a>
+
+	<h1>jquery 初階滑鼠事件click/hover</h1>
+	<h3>1. 點擊觸發，與紀錄購買狀態 (click)</h3>
+	<div class="buybtn">購買物品</div>
+	<hr/>
+	<h3>2. $(this)操作觸發動作的按鍵: 請選擇物品</h3>
+	<div class="selbtn" data-cata="bamboo">選擇物品一</div>
+	<div class="selbtn" data-cata="flower">選擇物品二</div>
+	<div class="selbtn" data-cata="tree">選擇物品三</div>
+	<!--<div class="clearfix"></div>-->
+	<h5 class="show_info">以選擇物品: 無</h5>
+	<h5 class="show_cata">以選擇種類</h5>
+	<hr/>
+	<h3>3. 滑鼠的移入移出(mouseenter/mouseleave)</h3>
+	<div class="hoverbox">使用者滑鼠對這個有興趣嗎</div>
+	
+	<h3>4. 時間相關的一些觸發</h3>
+	<h5>set Timeout(動作,時間) 經過特定時間後執行</h5>
+	<h5>set Interval(動作,時間) 每經過特定時間後執行</h5>
+	<div class="timerbox">五秒後這裡會移動且變紅色</div>
+	<div class="countbox">經過了x秒</div>
+
+<hr/>
+
+<%- include footer %>

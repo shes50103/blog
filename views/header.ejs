@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>MyBlog</title>
+<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/bootstrap.css">
+
+
+</head>
+<body>
+
+<header>
+<% if (user) { %>
+<h4><%= username %></h4>
+<% } %>
+<h1><%= title %></h1>
+</header>
+
+<nav>
+
+<% if (user) { %>
+<span><a class ="nav_phone" title="首頁" href="/">home</a></span>
+<span><a class ="nav_phone" title="存檔" href="/archive">archive</a></span>
+<span><a class ="nav_phone" title="標籤" href="/tags">tags</a></span>
+<span><a class ="nav_phone" title="連結" href="/links">links</a></span>
+<span><a class ="nav_phone" title="下載" href="/download">File</a></span>
+<span><a class ="nav_phone" title="發文" href="/post">post</a></span>
+<span><a class ="nav_phone" title="朋友" href="/friendship">friendship</a></span>
+<span><a class ="nav_phone" title="社團" href="/club">club</a></span>
+<span><a class ="nav_phone" title="遊戲" href="/play">play</a></span>
+<span><a class ="nav_phone" title="設定" href="/setting">setting</a></span>
+<span><a class ="nav_phone" title="登出" href="/logout">logout</a></span>
+<span><form action="/friend" method="GET"><input type="text" name="keyword" placeholder="Friend" class="search" /></form></span>
+<span><form action="/search" method="GET"><input type="text" name="keyword" placeholder="Post" class="search" /></form></span>
+<div class="phone_notice"><%= user.newfriend %></div>
+
+<% } else { %>
+  <span><a title="登入" href="/login">login</a></span>
+  <span><a title="註冊" href="/reg">register</a></span>
+<% } %>
+
+</nav>
+<div class="phone_start">♛</div>
+<article>
+
+<% if (success) { %>
+  <div><%= success %></div>
+<% } %>
+<% if (error) { %>
+  <div><%= error %> </div>
+<% } %>

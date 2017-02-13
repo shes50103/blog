@@ -1,0 +1,44 @@
+<%- include header %>
+
+<h3>Your password:</h3>
+<a href='/setting/password_edit'><%= "修改密碼" %></a>
+
+<h3>Your email:</h3>
+<%= user.email %></br>
+<a href='/setting/email_edit'><%= "修改信箱" %></a>
+
+
+
+<h3>Your posts:</h3>
+<div class="my_container">
+<% posts.forEach(function (post, index) { %>
+	<div class="my_work">
+		<a href="/u/<%= post.name %>/<%= post.time.day %>/<%= post.title %>"><%= post.title %></a>
+	</div>
+<% }) %>
+</div>
+  <div class="clearfix"></div>
+  
+<h3>Your friends:</h3>
+
+<div class="my_container">
+
+<% users.forEach(function (other_user, index) { %>
+	<% 
+		var flag = 0;
+		for( friend in user.friendlists) {
+			if (user.friendlists[friend].friendlist == other_user.name) { 
+				flag = 1;
+			}	
+		} 
+	%>
+	<% if (flag == 1) { %>
+	 <div class="my_work">
+	  <a href="/u/<%= other_user.name %>"><%= other_user.name %></a></br>
+	</div>
+<% } %>
+<% }) %>
+</div>
+
+<%- include paging %>
+<%- include footer %>
