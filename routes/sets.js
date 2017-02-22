@@ -11,7 +11,7 @@ var crypto = require('crypto');
 exports.get_setting1 = function (req, res, next){
 	  User.get(req.session.user.name, function (err, user) {
       req.session.user = user;
-	  console.log(req.session.user);
+	  console.log("aaaa");
 	  next();
 	  });
    };

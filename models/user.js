@@ -72,6 +72,7 @@ User.search = function(keyword, callback) {
 };
 
 User.get = function(name, callback) {
+		  console.log("bbbb");
   mongodb.open(function (err, db) {
     if (err) {
       return callback(err);//错误，返回 err 信息

@@ -417,16 +417,14 @@ phone_out {
   padding: 5px 13px;
   border-radius: 5px;
   cursor: pointer;
-    transition: 0.5s;
-	width: 48%;
+  transition: 0.5s;
+  width: 48%;
 
 }
 
 .screen .pages .page3 button:hover {
   background-color: white;
   color: black;
-  transition: 0.5s;
-
 }
 
 .screen .pages .page4 button {
@@ -434,11 +432,12 @@ phone_out {
   background-color: transparent;
   border: solid 1px rgba(0, 0, 0, 0.4);
   color: white;
+  margin: 2px 0px;
   padding: 5px 13px;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.5s;
-
+  user-select: none;
 }
 
 .screen .pages .page4 button.cal_equal {
@@ -448,13 +447,11 @@ phone_out {
 .screen .pages .page4 button:hover {
   background-color: white;
   color: black;
-  transition: 0.5s;
-
 }
 
 
 
-.screen .pages .page .cal_output {
+.screen .pages .page4 .cal_output {
   margin-top: 3px;
   margin-right: 10px;
   /*background-color: white;*/
@@ -465,7 +462,7 @@ phone_out {
   font-size: 20px;
 
 }
-
+/*
 .buttons button {
   background-color: rgba(white, 0.4);
   border: solid 1px rgba(0, 0, 0, 0.4);
@@ -479,7 +476,7 @@ phone_out {
   color: white;
 }
 
-
+*/
 
 
 
