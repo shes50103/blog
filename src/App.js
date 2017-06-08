@@ -20,17 +20,39 @@ class Item extends Component{
 }
 
 class App extends Component {
-  handleClick(){
-    console.log('AAA');
+   constructor(props) {
+    super(props);
+    let scores = {
+      Ruby:0,Goby:0,JS:0
+    }
+    // var lang = ["Ruby", "Goby", "JS"]
+
+    this.state = {
+      scores:scores,
+      lang: props.lang
+    };
+  }
+
+
+  handleClick(lang){
+    console.log(lang);
+    //add!!!
+    let newScore = Object.assign(this.state.scores, {[lang]: this.state.score[lang]+1})
+    this.setState({score: newScore})
   }
 
   gitList(){
     var l = ["Ruby", "Goby", "JS"]
+
     return l.map( i => {
       return <Item lang={i} >
-               <h3 onClick={this.handleClick}> bbbb</h3>
+               <h3 onClick={this.handleClick.bind(this)}> .</h3>
              </Item>
     });
+  }
+
+  showScores(){
+    console.log(this.state.scores)
   }
 
   render() {
@@ -50,6 +72,7 @@ class App extends Component {
             {this.gitList()}
           </ul>
        </div>
+          {this.showScores()}
         
       </div>
     );
