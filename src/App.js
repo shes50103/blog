@@ -10,14 +10,20 @@ class Myc extends Component{
   }
 }
 
+class Item extends Component{
+    render() {
+      return <li>?</li>
+  }
+}
+
 class App extends Component {
   handleClick(){
     console.log('AAA');
   }
 
   gitList(){
-    var l = [1,2,3,4,5]
-    return l.map( i => <i> item{i} </i>);
+    var l = ["Ruby", "Goby", "JS"]
+    return l.map( i => <Item/>);
   }
 
   render() {
