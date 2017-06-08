@@ -23,7 +23,9 @@ class App extends Component {
 
   gitList(){
     var l = ["Ruby", "Goby", "JS"]
-    return l.map( i => <Item lang={i} />);
+    return l.map( i => {
+      return <Item lang={i} />
+    });
   }
 
   render() {
