@@ -1,79 +1,65 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
-class Myc extends Component{
-    render() {
-      return (
-        <h2>HIHIHI!!!!aaa</h2>
-      );
+class Item extends Component {
+  static propTypes = {
+    lang: PropTypes.string.isRequired,
   }
-}
-
-class Item extends Component{
-    render() {
-      return <li>
-              {this.props.lang}
-              {this.props.children}
-            </li>
+  static defaultProps = {
+    age: 100,
+  }
+  render(){
+    return (
+      <li onClick={() => {
+        this.props.clickCallback(this.props.lang);
+      }}>
+        {this.props.lang}
+      </li>
+    )
   }
 }
 
 class App extends Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
-    let scores = {
-      Ruby:0,Goby:0,JS:0
-    }
-    // var lang = ["Ruby", "Goby", "JS"]
-
+    let langs = ["Ruby", "JavaScript", "Elixir"];
+    let scores = langs.reduce((accu, l) => {
+      accu[l] = 0;
+      return accu;
+    }, {})
     this.state = {
-      scores:scores,
-      lang: props.lang
-    };
+      langs,
+      scores,
+    }
   }
-
-
-  handleClick(lang){
-    console.log(lang);
-    //add!!!
-    let newScore = Object.assign(this.state.scores, {[lang]: this.state.score[lang]+1})
-    this.setState({score: newScore})
+  handleClick(lang) {
+    let newScore = Object.assign(this.state.scores, {
+                     [lang]: this.state.scores[lang] + 1
+                   })
+    this.setState({ score: newScore })
   }
-
-  gitList(){
-    var l = ["Ruby", "Goby", "JS"]
-
-    return l.map( i => {
-      return <Item lang={i} >
-               <h3 onClick={this.handleClick.bind(this)}> .</h3>
-             </Item>
+  getList() {
+    return this.state.langs.map(i =>{
+      return <Item lang={i}
+                   clickCallback={this.handleClick.bind(this)} />
     });
   }
 
-  showScores(){
+  showScores() {
     console.log(this.state.scores)
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header" ref="App-header" >
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 onClick={this.handleClick} > Welcome to React</h2>
-
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Myc />
-       <div>
+        <div>
           <ul>
-            {this.gitList()}
+            {this.getList()}
           </ul>
-       </div>
-          {this.showScores()}
-        
+        </div>
+        {this.showScores()}
       </div>
     );
   }
