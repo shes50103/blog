@@ -28,7 +28,7 @@ class App extends Component {
     var l = ["Ruby", "Goby", "JS"]
     return l.map( i => {
       return <Item lang={i} >
-               <h3>bbbb</h3>
+               <h3 onClick={this.handleClick}> bbbb</h3>
              </Item>
     });
   }
