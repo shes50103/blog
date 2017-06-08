@@ -12,7 +12,10 @@ class Myc extends Component{
 
 class Item extends Component{
     render() {
-      return <li>{this.props.lang}</li>
+      return <li>
+              {this.props.lang}
+              {this.props.children}
+            </li>
   }
 }
 
@@ -24,7 +27,9 @@ class App extends Component {
   gitList(){
     var l = ["Ruby", "Goby", "JS"]
     return l.map( i => {
-      return <Item lang={i} />
+      return <Item lang={i} >
+               <h3>bbbb</h3>
+             </Item>
     });
   }
 
